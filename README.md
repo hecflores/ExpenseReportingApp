@@ -1,2 +1,0 @@
-# ExpenseReportingApp
-First UWP Application
