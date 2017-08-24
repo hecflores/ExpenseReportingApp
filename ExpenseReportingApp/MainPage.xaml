@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="ExpenseReportingApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExpenseReportingApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:ExpenseReportingApp.Views"
+    xmlns:viewmodel="using:ExpenseReportingApp.ViewModels"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewmodel:MainViewModel x:Name="Context"/>
+    </Page.DataContext>
+    <Grid >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <views:ExpenseReportUserControl  Grid.Column="0" DataContext="{Binding ExpenseReportViewModel}" />
+            <views:ExpensesUserControl       Grid.Column="1" DataContext="{Binding ExpensesViewModel}" />
+        </Grid> 
+    </Grid>
+</Page>
