@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ExpenseReportsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ExpenseReportingService.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IExpenseReportsService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_Initilize_InputMessage">
+    <wsdl:part name="parameters" element="tns:Initilize" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_Initilize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitilizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_QueryExpenseReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExpenseReports" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_QueryExpenseReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExpenseReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_AddExpenseReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpenseReport" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_AddExpenseReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpenseReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_DeleteExpenseReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpenseReport" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseReportsService_DeleteExpenseReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpenseReportResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IExpenseReportsService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseReportsService/GetData" message="tns:IExpenseReportsService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseReportsService/GetDataResponse" message="tns:IExpenseReportsService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Initilize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseReportsService/Initilize" message="tns:IExpenseReportsService_Initilize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseReportsService/InitilizeResponse" message="tns:IExpenseReportsService_Initilize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExpenseReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseReportsService/QueryExpenseReports" message="tns:IExpenseReportsService_QueryExpenseReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseReportsService/QueryExpenseReportsResponse" message="tns:IExpenseReportsService_QueryExpenseReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddExpenseReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseReportsService/AddExpenseReport" message="tns:IExpenseReportsService_AddExpenseReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseReportsService/AddExpenseReportResponse" message="tns:IExpenseReportsService_AddExpenseReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpenseReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseReportsService/DeleteExpenseReport" message="tns:IExpenseReportsService_DeleteExpenseReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseReportsService/DeleteExpenseReportResponse" message="tns:IExpenseReportsService_DeleteExpenseReport_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IExpenseReportsService" type="tns:IExpenseReportsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IExpenseReportsService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Initilize">
+      <soap:operation soapAction="http://tempuri.org/IExpenseReportsService/Initilize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryExpenseReports">
+      <soap:operation soapAction="http://tempuri.org/IExpenseReportsService/QueryExpenseReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddExpenseReport">
+      <soap:operation soapAction="http://tempuri.org/IExpenseReportsService/AddExpenseReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpenseReport">
+      <soap:operation soapAction="http://tempuri.org/IExpenseReportsService/DeleteExpenseReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExpenseReportsService">
+    <wsdl:port name="BasicHttpBinding_IExpenseReportsService" binding="tns:BasicHttpBinding_IExpenseReportsService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/ExpenseReportingService/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

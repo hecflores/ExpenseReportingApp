@@ -1,0 +1,125 @@
+﻿<UserControl
+    x:Class="ExpenseReportingApp.Views.ExpensesUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExpenseReportingApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:ExpenseReportingApp.ViewModels"
+    xmlns:converters="using:ExpenseReportingApp.Converters"
+    mc:Ignorable="d"
+    d:DesignHeight="417.607"
+    d:DesignWidth="453.645">
+    
+    <UserControl.Resources>
+        <converters:IsSelectedConverter x:Name="IsNull"/>
+        <Style x:Name="ExpenseReportHeadersStyle" TargetType="AppBar">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color>#FF192B14</Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+
+            </Style.Setters>
+        </Style>
+        <Style x:Key="CystomeItemContainerStyle" TargetType="ListBox">
+            <Style.Setters>
+
+            </Style.Setters>
+        </Style>
+        <Style x:Name="ExpenseReportInputPanel" x:Key="ExpenseReportInputPanel" TargetType="Border">
+            <Setter Property="Background" Value="#FF074222"/>
+        </Style>
+        <DataTemplate x:Key="Viewing">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="10" Grid.Column="0" Text="{Binding Name}"/>
+                <TextBlock Margin="10" Grid.Column="1" Text="{Binding Added}"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EditingViewing" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="10" Grid.Column="0" Text="{Binding Name}"
+                           FontWeight="Bold"
+                           FontFamily="Century Gothic"
+                           />
+                <TextBlock Margin="10" Grid.Column="1" Text="{Binding Added}"/>
+                
+                <Border Grid.Column="3"
+                        UseLayoutRounding="True" >
+                    <Border HorizontalAlignment="Center"
+                            Padding="6"
+                            VerticalAlignment="Center"
+                            Background="DarkGreen"
+                            BorderBrush="Black">
+                        <Border.CornerRadius>40</Border.CornerRadius>
+                        <TextBlock FontWeight="Bold" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Text="{Binding Amount}"/>
+                    </Border>
+
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel x:Name="ExpensesPanel"
+                    Grid.Column="1">
+            <StackPanel>
+                <CommandBar Style="{StaticResource ExpenseReportHeadersStyle}">
+                    <CommandBar.PrimaryCommands>
+                        <AppBarButton Foreground="White" Icon="Delete" Command="{Binding Delete}" Visibility="{Binding SelectedExpense, Converter={StaticResource IsNull}}"/>
+                    </CommandBar.PrimaryCommands>
+                </CommandBar>
+                <Border Style="{StaticResource ExpenseReportInputPanel}">
+                    <Border.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="White"/>
+                        </Style>
+                    </Border.Resources>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock   Margin="10" Text="Name" />
+                                <TextBox Name="NametxtBx2" Margin="10" Text="{Binding NameOfAddingExpense, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock   Margin="10" Text="Amount" />
+                                <TextBox Name="AmountTxtBx" Margin="10" Text="{Binding AmountOfAddingExpense, Mode=TwoWay}" InputScope="Number"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        
+                        <Button Content="Add Expense" Margin="10" HorizontalAlignment="Stretch" Command="{Binding AddExpense}"/>
+                        <TextBlock  Name="AddingIndicator2" Margin="10" Text="{Binding AddingStatus}" />
+                    </StackPanel>
+                </Border>
+                <ListView SelectedItem="{Binding SelectedExpense,Mode=TwoWay}" ItemsSource="{Binding Expenses}" ItemTemplate="{StaticResource EditingViewing}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
