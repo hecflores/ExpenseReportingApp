@@ -23,7 +23,7 @@ namespace ExpenseReportingApp
     /// </summary>
     sealed partial class App : Application
     {
-        public static String DB_PATH = Path.Combine(Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "ExpenseReport.sqlite"));//DataBase Name    ;
+        public static String DB_PATH = Path.Combine(Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "ExpenseReportFinal.sqlite"));//DataBase Name    ;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

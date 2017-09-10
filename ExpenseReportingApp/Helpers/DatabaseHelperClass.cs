@@ -44,8 +44,7 @@ namespace ExpenseReportingApp.Helpers
                 conn.RunInTransaction(() =>
                 {
                     conn.Insert(_Obj);
-                });
-            }
+                });            }
         }
 
         public static async Task InsertAsync(Object _Obj)

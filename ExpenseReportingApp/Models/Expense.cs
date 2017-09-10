@@ -12,7 +12,7 @@ namespace ExpenseReportingApp.Models
         public int Id { get; set; }
         public DateTime Added { get; set; }
         public String Name { get; set; }
-        public int Amount { get; set; }
+        public double Amount { get; set; }
 
         [SQLiteNetExtensions.Attributes.ForeignKey(typeof(ExpenseReport))]
         public int ReportID { get; set; }
@@ -26,7 +26,7 @@ namespace ExpenseReportingApp.Models
             Added = DateTime.Now;
         }
 
-        public Expense(String name, int Amount)
+        public Expense(String name, double Amount)
         {
             this.Name = name;
             this.Amount = Amount;

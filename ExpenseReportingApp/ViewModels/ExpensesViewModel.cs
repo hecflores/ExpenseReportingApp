@@ -35,11 +35,11 @@ namespace ExpenseReportingApp.ViewModels
             get => _NameOfAddingExpense;
             set => Set<String>(ref _NameOfAddingExpense, value);
         }
-        private int _AmountOfAddingExpense = 0;
-        public int AmountOfAddingExpense
+        private double _AmountOfAddingExpense = 0;
+        public double AmountOfAddingExpense
         {
             get => _AmountOfAddingExpense;
-            set => Set<int>(ref _AmountOfAddingExpense, value);
+            set => Set<double>(ref _AmountOfAddingExpense, value);
         }
 
         //private ObservableCollection<Expense> _Expenses = new ObservableCollection<Expense>();

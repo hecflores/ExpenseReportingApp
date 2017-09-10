@@ -51,8 +51,8 @@ namespace ExpenseReportingApp.Models
 
             }
         }
-        private int _Amount = 0;
-        public int Amount
+        private double _Amount = 0;
+        public double Amount
         { get => _Amount;
             set {
                 _Amount = value;
